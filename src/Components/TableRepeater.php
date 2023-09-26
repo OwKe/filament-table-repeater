@@ -21,6 +21,8 @@ class TableRepeater extends Repeater
 
     protected bool|Closure $withoutHeader = false;
 
+    protected string $view = 'filament-table-repeater::components.table-repeater';
+
     public function breakPoint(string $breakPoint = 'md'): static
     {
         $this->breakPoint = $breakPoint;
@@ -91,7 +93,7 @@ class TableRepeater extends Repeater
             $key = method_exists($field, 'getName') ? $field->getName() : $field->getId();
 
             $isRequired = false;
-            
+
             if (property_exists($field, 'isRequired') && is_bool($field->isRequired())) {
                 $isRequired = $field->isRequired();
 
@@ -154,6 +156,6 @@ class TableRepeater extends Repeater
 
     public function getView(): string
     {
-        return 'filament-table-repeater::components.table-repeater';
+        return $this->view;
     }
 }
