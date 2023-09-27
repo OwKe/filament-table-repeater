@@ -21,8 +21,6 @@ class TableRepeater extends Repeater
 
     protected bool|Closure $withoutHeader = false;
 
-    protected string $view = 'filament-table-repeater::components.table-repeater';
-
     public function breakPoint(string $breakPoint = 'md'): static
     {
         $this->breakPoint = $breakPoint;
@@ -156,6 +154,10 @@ class TableRepeater extends Repeater
 
     public function getView(): string
     {
-        return $this->view;
+        if (isset($this->view)) {
+            return $this->view;
+        }
+
+        return 'filament-table-repeater::components.table-repeater';
     }
 }
